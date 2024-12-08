@@ -177,7 +177,8 @@ def calculate_metrics(data: pd.DataFrame) -> dict:
     avg_holding_period = len(data[data['Position'] > 0]) / num_trades if num_trades > 0 else 0
 
     # Sharpe ratio for the strategy
-    sharpe_ratio = data['Daily_Return'].mean() / data['Daily_Return'].std() if data['Daily_Return'].std() > 0 else 0
+    sharpe_ratio = (data['Daily_Return'].mean() / data['Daily_Return'].std()) * np.sqrt(252) \
+        if data['Daily_Return'].std() > 0 else 0
 
     # Calculate the Sharpe ratio for Nifty (used as threshold Sharpe)
     nifty_returns = data['Returns'].dropna()  # Ensure no NaN values
@@ -236,7 +237,7 @@ def create_download_section(file_list: list[tuple[str, str]]):
 
 
 def main():
-    st.title("FlowTrade")
+    st.title("Momentum-Based Trading Strategy")
 
     # Create sidebar elements (tranche_size, lookback_period, initial_capital)
     tranche_size, lookback_period, initial_capital = create_sidebar()
