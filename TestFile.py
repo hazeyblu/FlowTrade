@@ -17,7 +17,7 @@ def create_sidebar() -> tuple[float, int, int]:
     """
     tranche_size = st.sidebar.slider(
         "Tranche Size (Proportion of Portfolio)",
-        min_value=0.25, max_value=1.0, step=0.25, value=0.5,
+        min_value=0.25, max_value=1.0, step=0.25, value=0.25,
         help="Defines the allocation per tranche as a proportion of the total portfolio."
     )
     lookback_period = st.sidebar.slider(
