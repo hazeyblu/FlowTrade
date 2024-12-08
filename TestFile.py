@@ -277,6 +277,10 @@ def main():
     # Display Probabilistic Sharpe Ratio (PSR) details
     create_expander(data, metrics['sharpe_ratio'], metrics['nifty_sharpe_ratio'])
 
+    # Drop specified columns and rename 'Close' to 'Nifty'
+    data = data.drop(columns=["Returns", "Sharpe_n", "Sharpe_2n", "Momentum", "Signal", "Position", "Daily_Return"])
+    data = data.rename(columns={"Close": "Nifty"})
+
     # Optionally save the results to CSV
     try:
         data.to_csv("strategy_results.csv")
