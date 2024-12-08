@@ -279,7 +279,7 @@ def main():
     # Optionally save the results to CSV
     try:
         data.to_csv("strategy_results.csv")
-        file_list = [("strategy_results.csv", "text/csv")]
+        file_list = [("strategy_results.csv", "text/csv"),("FlowTrade.pdf", "application/pdf")]
         create_download_section(file_list)
     except Exception as e:
         st.error(f"An error occurred while saving the results: {e}")
