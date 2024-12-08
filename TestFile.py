@@ -139,7 +139,7 @@ def calculate_portfolio(data: pd.DataFrame, initial_capital: float) -> tuple[pd.
     data['Daily_Return'] = data['Position'] * data['Returns']
 
     # Equity curves
-    data['Nifty NAV'] = (1 + data['Returns']).cumprod() * initial_capital
+    data['Nifty'] = (1 + data['Returns']).cumprod() * initial_capital
     cumulative_returns = (1 + data['Daily_Return']).cumprod()
     data['Portfolio_Value'] = cumulative_returns * initial_capital
 
@@ -182,7 +182,8 @@ def calculate_metrics(data: pd.DataFrame) -> dict:
 
     # Calculate the Sharpe ratio for Nifty (used as threshold Sharpe)
     nifty_returns = data['Returns'].dropna()  # Ensure no NaN values
-    nifty_sharpe_ratio = nifty_returns.mean() / nifty_returns.std() if nifty_returns.std() > 0 else 0
+    nifty_sharpe_ratio = (nifty_returns.mean() / nifty_returns.std()) * np.sqrt(252) \
+        if nifty_returns.std() > 0 else 0
 
     # Return calculated metrics
     return {
@@ -272,7 +273,7 @@ def main():
 
     # Plot equity curve
     st.subheader("Portfolio Equity Curve")
-    st.plotly_chart(px.line(data, x=data.index, y=['Portfolio_Value', 'Nifty NAV']), use_container_width=True)
+    st.plotly_chart(px.line(data, x=data.index, y=['Portfolio_Value', 'Nifty']), use_container_width=True)
 
     # Display Probabilistic Sharpe Ratio (PSR) details
     create_expander(data, metrics['sharpe_ratio'], metrics['nifty_sharpe_ratio'])
