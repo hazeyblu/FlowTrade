@@ -139,7 +139,7 @@ def calculate_portfolio(data: pd.DataFrame, initial_capital: float) -> tuple[pd.
     data['Daily_Return'] = data['Position'] * data['Returns']
 
     # Equity curves
-    data['Nifty'] = (1 + data['Returns']).cumprod() * initial_capital
+    data['Nifty NAV'] = (1 + data['Returns']).cumprod() * initial_capital
     cumulative_returns = (1 + data['Daily_Return']).cumprod()
     data['Portfolio_Value'] = cumulative_returns * initial_capital
 
@@ -272,7 +272,7 @@ def main():
 
     # Plot equity curve
     st.subheader("Portfolio Equity Curve")
-    st.plotly_chart(px.line(data, x=data.index, y=['Portfolio_Value', 'Nifty']), use_container_width=True)
+    st.plotly_chart(px.line(data, x=data.index, y=['Portfolio_Value', 'Nifty NAV']), use_container_width=True)
 
     # Display Probabilistic Sharpe Ratio (PSR) details
     create_expander(data, metrics['sharpe_ratio'], metrics['nifty_sharpe_ratio'])
