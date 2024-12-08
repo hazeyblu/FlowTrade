@@ -236,7 +236,7 @@ def create_download_section(file_list: list[tuple[str, str]]):
 
 
 def main():
-    st.title("Momentum-Based Trading Strategy")
+    st.title("FlowTrade")
 
     # Create sidebar elements (tranche_size, lookback_period, initial_capital)
     tranche_size, lookback_period, initial_capital = create_sidebar()
