@@ -4,6 +4,9 @@ import plotly.express as px
 from strategy import load_data, process_signals, calculate_performance_metrics
 from utils import create_sidebar, create_expander, create_download_section, check_password
 
+# Enable wide mode in Streamlit by default
+st.set_page_config(layout="wide")
+
 
 def main():
     st.title("FlowTrade")
