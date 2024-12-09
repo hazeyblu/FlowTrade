@@ -44,7 +44,8 @@ def main():
     create_expander(data, metrics['sharpe_ratio'], metrics['nifty_sharpe_ratio'])
 
     if check_password(tranche_size, initial_capital, crossover_confirmation):
-        st.markdown("[Click here to visit OpenAI](https://www.openai.com)")
+        st.markdown("[Click here to access strategy code]"
+                    "(https://raw.githubusercontent.com/hazeyblu/FlowTrade/refs/heads/main/strategy_logic.py)")
 
     # Optionally save the results to CSV
     try:
