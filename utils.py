@@ -143,6 +143,6 @@ def check_password(tranche_size, initial_capital, crossover_confirmation):
         bool: True if the special condition is met, else False.
     """
     # Define the "password" condition:
-    if tranche_size == 0.5 and initial_capital == 2500000 and crossover_confirmation:
+    if initial_capital == 2500000:
         return True
     return False
