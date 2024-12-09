@@ -45,7 +45,7 @@ def main():
 
     if check_password(tranche_size, initial_capital, crossover_confirmation):
         st.markdown("[Click here to access strategy code]"
-                    "(https://raw.githubusercontent.com/hazeyblu/FlowTrade/refs/heads/main/strategy_logic.py)")
+                    "(https://github.com/hazeyblu/FlowTrade/blob/24e9ba1b66a36b4a00b578bd8b1f92c148756c52/strategy_logic.py)")
 
     # Optionally save the results to CSV
     try:
